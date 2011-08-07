@@ -31,6 +31,11 @@ class DecimalTest extends PHPUnit_Framework_TestCase
     {
         new Decimal('1.1.1');
     }
+    
+    public function testConstructorFromInteger()
+    {
+        $this->assertEquals('10', (string) new Decimal(10));
+    }
 
     public function testConstructorSucceedsNothingAfterDecimalSeperator()
     {
@@ -74,7 +79,7 @@ class DecimalTest extends PHPUnit_Framework_TestCase
     
     public function testSubtract()
     {
-        $expected = new Decimal('0.001');
+        $expected = new Decimal(0.001);
         $this->assertEquals($expected, $this->decimal->subtract(new Decimal('1.234')));
         $this->assertEquals($expected, $this->decimal);
     }
@@ -84,5 +89,30 @@ class DecimalTest extends PHPUnit_Framework_TestCase
         $expected = new Decimal('3.5813');
         $this->assertEquals($expected, $this->decimal->subtract(new Decimal('-2.3463')));
         $this->assertEquals($expected, $this->decimal);
+    }
+    
+    public function testMultiply()
+    {
+        $actual = new Decimal(0.2);
+        $expected = new Decimal(0.8);
+        
+        $this->assertEquals($expected, $actual->multiply(new Decimal(4)));
+    }
+    
+    public function testDivide()
+    {
+        $actual = new Decimal(120.8080);
+        $expected = new Decimal(30.202);
+        
+        $this->assertEquals($expected, $actual->divide(new Decimal(4)));
+    }
+    
+    public function testNoFloatFail()
+    {
+        // avoid float issues like: 7 === floor((0.1+0.7)*10)
+        $decimal = new Decimal(0.1);
+        $decimal->add(new Decimal(0.7));
+        $decimal->multiply(new Decimal(10));
+        $this->assertEquals(8, (string) $decimal);
     }
 }

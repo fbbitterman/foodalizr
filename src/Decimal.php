@@ -25,12 +25,13 @@ class Decimal
         if (count($valueParts) > 2) {
             throw new \InvalidArgumentException('The value is exepceted to be valid decimal');
         }
-        
+
         foreach ($valueParts as $key => $valuePart) {
             if ('' === $valuePart) {
                 $valueParts[$key] = '0';
             }
         }
+        $value = implode(static::DECIMAL_POINT, $valueParts);
 
         // validate integer part
         $validatePart = $valueParts[0];
@@ -40,15 +41,16 @@ class Decimal
         if (!ctype_digit($validatePart)) {
             throw new \InvalidArgumentException('The integer part is exepceted to be digits only');
         }
-        
+
         // validate decimal part
         if (isset($valueParts[1])) {
             if (!ctype_digit($valueParts[1])) {
                 throw new \InvalidArgumentException('The decimal part is exepceted to be digits only');
             }
+            $value = rtrim($value, '0');
         }
 
-        $this->value = rtrim(implode(static::DECIMAL_POINT, $valueParts), '0.');
+        $this->value = rtrim($value, '.');
     }
 
     /**
@@ -104,6 +106,26 @@ class Decimal
     public function subtract(Decimal $value)
     {
         $this->value = bcsub($this->value, $value, $this->getMaxScale($value));
+        return $this;
+    }
+
+    /**
+     * @param Decimal $value
+     * @return Decimal
+     */
+    public function multiply(Decimal $value)
+    {
+        $this->value = bcmul($this->value, $value, $this->getMaxScale($value));
+        return $this;
+    }
+
+    /**
+     * @param Decimal $value
+     * @return Decimal
+     */
+    public function divide(Decimal $value)
+    {
+        $this->value = bcdiv($this->value, $value, $this->getMaxScale($value));
         return $this;
     }
 }
