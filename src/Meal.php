@@ -24,7 +24,7 @@ class Meal
     
     /**
      * @param int $id
-     * @return Person
+     * @return Meal
      */
     public function setId($id)
     {
@@ -45,7 +45,7 @@ class Meal
     
     /**
      * @param string $name
-     * @return Person
+     * @return Meal
      */
     public function setName($name)
     {
