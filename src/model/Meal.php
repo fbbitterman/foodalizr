@@ -15,6 +15,11 @@ class Meal
     private $name;
     
     /**
+     * @var Date
+     */
+    private $date;
+    
+    /**
      * @return int
      */
     public function getId()
@@ -54,5 +59,21 @@ class Meal
         }
         $this->name = $name;
         return $this;
+    }
+    
+    /**
+     * @return Date
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+    
+    /**
+     * @param Date $date
+     */
+    public function setDate(Date $date)
+    {
+        $this->date = $date;
     }
 }
