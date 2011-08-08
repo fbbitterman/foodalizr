@@ -5,4 +5,5 @@
 	<include file="database/changelog/changelog-1-df.xml" />
 	<include file="database/changelog/changelog-2-df.xml" />
     <include file="database/changelog/changelog-3-df.xml" />
+    <include file="database/changelog/changelog-4-df.xml" />
 </databaseChangeLog>
