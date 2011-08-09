@@ -2,5 +2,10 @@
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
-	<include file="database/changelog/upgrade-0.0.0-0.0.1.xml" />
+	<changeSet id="3" author="df">
+		<sql>
+			ALTER TABLE `meal` COLLATE utf8_general_ci ENGINE InnoDB;
+			ALTER TABLE `person` COLLATE utf8_general_ci ENGINE InnoDB;
+		</sql>
+	</changeSet>
 </databaseChangeLog>
