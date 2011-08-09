@@ -4,11 +4,11 @@ if (!$iniPath = get_cfg_var('cfg_file_path')) {
     $iniPath = 'WARNING: not using a php.ini file';
 }
 
-echo "**********************************\n";
-echo "*                                *\n";
-echo "*  Foodalizr requirements check  *\n";
-echo "*                                *\n";
-echo "**********************************\n\n";
+echo "********************************\n";
+echo "*                              *\n";
+echo "*  Symfony requirements check  *\n";
+echo "*                              *\n";
+echo "********************************\n\n";
 echo sprintf("php.ini used by PHP: %s\n\n", $iniPath);
 
 echo "** WARNING **\n";

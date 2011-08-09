@@ -1,7 +1,13 @@
 <?php
 
-namespace Foodalizr\Controller;
+namespace Knid\FoodalizrBundle\Controller;
 
-class PersonController
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+class PersonController extends Controller
 {
+    public function addAction()
+    {
+        die('hello from ' . __METHOD__);
+    }
 }

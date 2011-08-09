@@ -1,7 +1,13 @@
 <?php
 
-namespace Foodalizr\Controller;
+namespace Knid\FoodalizrBundle\Controller;
 
-class MealController
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+class MealController extends Controller
 {
+    public function indexAction()
+    {
+        return $this->render('KnidFoodalizrBundle:Meal:index.html.twig');
+    }
 }
