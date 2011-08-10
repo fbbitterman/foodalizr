@@ -31,7 +31,7 @@ class Response
      * @param Knid\Http\Header $header
      * @return Knid\Http\Response
      */
-    public function addHeader(Knid\Http\Header $header)
+    public function addHeader(Header $header)
     {
         $this->headers->attach($header);
         return $this;
@@ -69,7 +69,7 @@ class Response
     private function sendHeaders()
     {
         foreach ($this->headers as $header) {
-            header((string) $header);
+            $header->send();
         }
         return $this;
     }

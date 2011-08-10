@@ -44,4 +44,15 @@ class Header
     {
         return $this->name . ': ' . $this->value;
     }
+    
+    /**
+     * Sends the header to the client
+     * 
+     * @return Knid\Http\Header;
+     */
+    public function send()
+    {
+        header((string) $this);
+        return $this;
+    }
 }
